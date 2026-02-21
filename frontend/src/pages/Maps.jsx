@@ -109,7 +109,7 @@ const Maps = () => {
                             </Box>
 
                             {/* Image */}
-                            <Box sx={{ height: 180, overflow: 'hidden', background: '#0d0808', position: 'relative' }}>
+                            <Box sx={{ height: 280, overflow: 'hidden', background: '#0d0808', position: 'relative' }}>
                                 {map.image_url ? (
                                     <Box
                                         component="img"
@@ -200,7 +200,7 @@ const Maps = () => {
                                     alt={selected.name}
                                     onError={(e) => { e.target.style.display = 'none'; }}
                                     sx={{
-                                        width: '100%', maxHeight: 260, objectFit: 'contain', mb: 3,
+                                        width: '100%', maxHeight: 480, objectFit: 'contain', mb: 3,
                                         filter: 'contrast(1.1)',
                                         background: '#0d0808',
                                     }}

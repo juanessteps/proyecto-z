@@ -9,7 +9,6 @@ const items = [
     { id: 7, name: 'Great Knife', type: 'weapon', description: 'Pyramid Head\'s iconic weapon. Impossibly heavy, dragged with effort across the floor. James cannot truly wield it — he can only briefly use it. The symbolism is not subtle.' },
     // Health
     { id: 8, name: 'Health Drink', type: 'health', description: 'A medical beverage. Restores a small amount of health. Found in cabinets, shelves, and vending machines throughout the town.' },
-    { id: 9, name: 'First Aid Kit', type: 'health', description: 'A full medical kit that restores a substantial portion of James\'s health. Use them sparingly — they are less common than drinks.' },
     { id: 10, name: 'Ampoule', type: 'health', description: 'An injectable medical compound. Restores health instantly and in large amounts. Reserve for emergencies.' },
     // Ammo
     { id: 11, name: 'Handgun Bullets', type: 'ammo', description: 'Standard 9mm ammunition for the handgun. Found frequently throughout all areas of Silent Hill.' },
