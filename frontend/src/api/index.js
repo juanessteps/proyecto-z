@@ -8,7 +8,11 @@ const api = axios.create({ baseURL: '/api' });
  */
 export const proxyImg = (url) => {
     if (!url) return '';
-    if (url.includes('wikia.nocookie.net') || url.includes('wikia.com')) {
+    if (
+        url.includes('wikia.nocookie.net') ||
+        url.includes('wikia.com') ||
+        url.includes('silenthillmemories.net')
+    ) {
         return `/api/img?url=${encodeURIComponent(url)}`;
     }
     return url;

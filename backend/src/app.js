@@ -42,6 +42,11 @@ app.get('/api/img', (req, res) => {
     const { url } = req.query;
     if (!url) return res.status(400).send('Missing url param');
 
+    let referer = 'https://silenthill.fandom.com/';
+    if (url.includes('silenthillmemories.net')) {
+        referer = 'https://www.silenthillmemories.net/';
+    }
+
     const parsed = new URL(url);
     const lib = parsed.protocol === 'https:' ? https : http;
 
@@ -49,7 +54,7 @@ app.get('/api/img', (req, res) => {
         hostname: parsed.hostname,
         path: parsed.pathname + parsed.search,
         headers: {
-            'Referer': 'https://silenthill.fandom.com/',
+            'Referer': referer,
             'User-Agent': 'Mozilla/5.0 (compatible; SH2FanPortal/1.0)',
         },
     };
