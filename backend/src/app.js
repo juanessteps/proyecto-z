@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const https = require('https');
+const http = require('http');
 
 const characterRoutes = require('./routes/characters');
 const loreRoutes = require('./routes/lore');
@@ -33,6 +35,30 @@ app.get('/api/health', (_req, res) => {
         project: 'Silent Hill 2 Fan Portal',
         mode: 'static (no database required)',
     });
+});
+
+// ── Image proxy (bypasses CDN hotlink protection) ────────
+app.get('/api/img', (req, res) => {
+    const { url } = req.query;
+    if (!url) return res.status(400).send('Missing url param');
+
+    const parsed = new URL(url);
+    const lib = parsed.protocol === 'https:' ? https : http;
+
+    const options = {
+        hostname: parsed.hostname,
+        path: parsed.pathname + parsed.search,
+        headers: {
+            'Referer': 'https://silenthill.fandom.com/',
+            'User-Agent': 'Mozilla/5.0 (compatible; SH2FanPortal/1.0)',
+        },
+    };
+
+    lib.get(options, (upstream) => {
+        res.set('Content-Type', upstream.headers['content-type'] || 'image/jpeg');
+        res.set('Cache-Control', 'public, max-age=86400');
+        upstream.pipe(res);
+    }).on('error', () => res.status(502).send('Image fetch failed'));
 });
 
 // ── 404 ───────────────────────────────────────────────────

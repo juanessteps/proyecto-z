@@ -6,7 +6,7 @@ import {
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import axios from 'axios';
+import { getMaps, proxyImg } from '../api';
 
 const Maps = () => {
     const [maps, setMaps] = useState([]);
@@ -15,7 +15,7 @@ const Maps = () => {
     const [error, setError] = useState('');
 
     useEffect(() => {
-        axios.get('/api/maps')
+        getMaps()
             .then(({ data }) => setMaps(data))
             .catch(() => setError('Failed to load maps'))
             .finally(() => setLoading(false));
@@ -113,7 +113,7 @@ const Maps = () => {
                                 {map.image_url ? (
                                     <Box
                                         component="img"
-                                        src={map.image_url}
+                                        src={proxyImg(map.image_url)}
                                         alt={map.name}
                                         onError={(e) => { e.target.style.display = 'none'; }}
                                         sx={{
@@ -196,7 +196,7 @@ const Maps = () => {
                             {selected.image_url && (
                                 <Box
                                     component="img"
-                                    src={selected.image_url}
+                                    src={proxyImg(selected.image_url)}
                                     alt={selected.name}
                                     onError={(e) => { e.target.style.display = 'none'; }}
                                     sx={{

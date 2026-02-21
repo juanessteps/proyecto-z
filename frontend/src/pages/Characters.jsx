@@ -4,7 +4,7 @@ import {
     Chip, Dialog, DialogContent, DialogTitle, IconButton, CircularProgress, Alert
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { getCharacters } from '../api';
+import { getCharacters, proxyImg } from '../api';
 
 const ROLE_COLORS = {
     Protagonist: 'error',
@@ -51,7 +51,7 @@ const Characters = () => {
                                     <CardMedia
                                         component="img"
                                         height="220"
-                                        image={char.image_url}
+                                        image={proxyImg(char.image_url)}
                                         alt={char.name}
                                         sx={{ objectFit: 'cover', filter: 'grayscale(40%) contrast(1.1)', transition: 'filter 0.3s', '&:hover': { filter: 'grayscale(0%) contrast(1.2)' } }}
                                         onError={(e) => { e.target.style.display = 'none'; }}
@@ -105,7 +105,7 @@ const Characters = () => {
                             {selected.image_url && (
                                 <Box
                                     component="img"
-                                    src={selected.image_url}
+                                    src={proxyImg(selected.image_url)}
                                     alt={selected.name}
                                     onError={(e) => { e.target.style.display = 'none'; }}
                                     sx={{ width: '100%', maxHeight: 280, objectFit: 'contain', mb: 3, filter: 'contrast(1.1)' }}

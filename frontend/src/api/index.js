@@ -2,6 +2,18 @@ import axios from 'axios';
 
 const api = axios.create({ baseURL: '/api' });
 
+/**
+ * Route Fandom CDN images through our backend proxy so the server
+ * can spoof the Referer header and bypass hotlink protection.
+ */
+export const proxyImg = (url) => {
+    if (!url) return '';
+    if (url.includes('wikia.nocookie.net') || url.includes('wikia.com')) {
+        return `/api/img?url=${encodeURIComponent(url)}`;
+    }
+    return url;
+};
+
 // Attach token from localStorage automatically
 api.interceptors.request.use((config) => {
     const stored = localStorage.getItem('sh2_auth');
