@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Maps from './pages/Maps';
 import Lore from './pages/Lore';
 import Characters from './pages/Characters';
 import Items from './pages/Items';
@@ -26,6 +27,7 @@ const App = () => (
                         <Route path="/" element={<Home />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
+                        <Route path="/maps" element={<Maps />} />
                         <Route path="/lore" element={<Lore />} />
                         <Route path="/characters" element={<Characters />} />
                         <Route path="/items" element={<Items />} />

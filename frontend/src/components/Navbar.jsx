@@ -8,6 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useAuth } from '../context/AuthContext';
 
 const NAV_LINKS = [
+    { label: 'Maps', path: '/maps' },
     { label: 'Lore', path: '/lore' },
     { label: 'Characters', path: '/characters' },
     { label: 'Items', path: '/items' },
@@ -50,9 +51,11 @@ const Navbar = () => {
                                 {label}
                             </Button>
                         ))}
-                        <Divider orientation="vertical" flexItem sx={{ my: 1, mx: 1, borderColor: '#2c2020' }} />
-                        {user ? (
+
+                        {/* Only show admin controls when already logged in */}
+                        {user && (
                             <>
+                                <Divider orientation="vertical" flexItem sx={{ my: 1, mx: 1, borderColor: '#2c2020' }} />
                                 {isAdmin && (
                                     <Chip label="Admin" size="small" color="warning" sx={{ mr: 1, fontFamily: "'Rajdhani'" }} />
                                 )}
@@ -67,13 +70,6 @@ const Navbar = () => {
                                 )}
                                 <Button variant="outlined" color="error" size="small" onClick={handleLogout}>
                                     Logout
-                                </Button>
-                            </>
-                        ) : (
-                            <>
-                                <Button component={RouterLink} to="/login" sx={{ color: '#d4c5b0' }}>Login</Button>
-                                <Button component={RouterLink} to="/register" variant="contained" color="primary" size="small">
-                                    Join
                                 </Button>
                             </>
                         )}
@@ -102,9 +98,10 @@ const Navbar = () => {
                                 </ListItemButton>
                             </ListItem>
                         ))}
-                        <Divider sx={{ borderColor: '#2c2020', my: 1 }} />
-                        {user ? (
+
+                        {user && (
                             <>
+                                <Divider sx={{ borderColor: '#2c2020', my: 1 }} />
                                 {isAdmin && (
                                     <ListItem disablePadding>
                                         <ListItemButton component={RouterLink} to="/admin" onClick={() => setDrawer(false)}>
@@ -115,19 +112,6 @@ const Navbar = () => {
                                 <ListItem disablePadding>
                                     <ListItemButton onClick={() => { handleLogout(); setDrawer(false); }}>
                                         <ListItemText primary="Logout" sx={{ color: '#c0392b' }} />
-                                    </ListItemButton>
-                                </ListItem>
-                            </>
-                        ) : (
-                            <>
-                                <ListItem disablePadding>
-                                    <ListItemButton component={RouterLink} to="/login" onClick={() => setDrawer(false)}>
-                                        <ListItemText primary="Login" sx={{ color: '#d4c5b0' }} />
-                                    </ListItemButton>
-                                </ListItem>
-                                <ListItem disablePadding>
-                                    <ListItemButton component={RouterLink} to="/register" onClick={() => setDrawer(false)}>
-                                        <ListItemText primary="Register" sx={{ color: '#c0392b' }} />
                                     </ListItemButton>
                                 </ListItem>
                             </>

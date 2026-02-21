@@ -10,6 +10,7 @@ const loreRoutes = require('./routes/lore');
 const itemRoutes = require('./routes/items');
 const tipRoutes = require('./routes/tips');
 const commentRoutes = require('./routes/comments');
+const mapRoutes = require('./routes/maps');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -27,6 +28,7 @@ app.use('/api/lore', loreRoutes);
 app.use('/api/items', itemRoutes);
 app.use('/api/tips', tipRoutes);
 app.use('/api/comments', commentRoutes);
+app.use('/api/maps', mapRoutes);
 
 // ── Health check ──────────────────────────────────────────
 app.get('/api/health', (_req, res) => {

@@ -97,3 +97,25 @@ INSERT INTO survival_tips (title, content, difficulty) VALUES
 ('Explore Everything',    'Silent Hill 2 rewards thorough exploration. Hidden notes, items, and puzzle clues are found in seemingly empty rooms and dark corners.', 'medium'),
 ('Puzzle Difficulty',     'Play on Hard puzzle difficulty for the intended experience. Normal mode simplifies riddles that are core to the game''s atmosphere.', 'hard')
 ON CONFLICT DO NOTHING;
+
+-- MAPS TABLE
+CREATE TABLE IF NOT EXISTS maps (
+  id          SERIAL PRIMARY KEY,
+  name        VARCHAR(200) NOT NULL,
+  area        VARCHAR(150),
+  description TEXT,
+  image_url   TEXT,
+  order_num   INTEGER DEFAULT 0,
+  created_at  TIMESTAMPTZ DEFAULT NOW()
+);
+
+INSERT INTO maps (name, area, description, image_url, order_num) VALUES
+('Rosewater Park',           'Silent Hill - Lakeshore',    'A foggy lakeside park at the edge of town. James first enters Silent Hill here, finding only silence and mist where a message once existed.',  'https://static.wikia.nocookie.net/silent-hill/images/a/a4/SH2_Map_Rosewater.png', 1),
+('Woodside Apartments',      'Silent Hill - Residential',  'A crumbling apartment complex where James begins his search. Mannequins and Lying Figures stalk its dark hallways. Pyramid Head is first encountered in the stairwell vault.',  'https://static.wikia.nocookie.net/silent-hill/images/7/71/SH2_Map_Woodside.png', 2),
+('Blue Creek Apartments',    'Silent Hill - Residential',  'Connected to Woodside via a subterranean passage. Darker and more labyrinthine, this building hides the key to the adjacent hospital district.',  'https://static.wikia.nocookie.net/silent-hill/images/8/83/SH2_Map_BlueCreek.png', 3),
+('Brookhaven Hospital',      'Silent Hill - Medical',      'An abandoned hospital overrun by grotesque creatures. Nurses wander its wards and the underground levels descend into the Otherworld. Angela confronts her trauma here.',  'https://static.wikia.nocookie.net/silent-hill/images/b/b1/SH2_Map_Brookhaven.png', 4),
+('Silent Hill Historical Society', 'Silent Hill - Underground', 'A seemingly innocuous building that conceals a vertical shaft into the Labyrinth  an endless maze of caged cells and industrial corridors beneath the town.',  'https://static.wikia.nocookie.net/silent-hill/images/e/e9/SH2_Map_Historical.png', 5),
+('The Labyrinth',            'Underground',                'A disorienting subterranean prison. Pyramid Head''s domain. James must navigate flooded corridors and grotesque puzzles to reach Toluca Lake above.',  'https://static.wikia.nocookie.net/silent-hill/images/f/f5/SH2_Map_Labyrinth.png', 6),
+('Toluca Lake',              'Silent Hill - Lake',         'The dark heart of Silent Hill. A motorboat crossing leads James to the Lakeview Hotel  the ''special place'' mentioned in Mary''s letter.',  'https://static.wikia.nocookie.net/silent-hill/images/9/9c/SH2_Map_Toluca.png', 7),
+('Lakeview Hotel',           'Silent Hill - Lakeside',     'A once-grand hotel now decayed by time and guilt. The final act plays out here as James'' memories  and his true nature  are revealed layer by layer.',  'https://static.wikia.nocookie.net/silent-hill/images/a/a1/SH2_Map_Lakeview.png', 8)
+ON CONFLICT DO NOTHING;

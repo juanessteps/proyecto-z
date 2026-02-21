@@ -52,4 +52,11 @@ export const getComments = (entity, entityId) => api.get('/comments', { params: 
 export const createComment = (data) => api.post('/comments', data);
 export const deleteComment = (id) => api.delete(`/comments/${id}`);
 
+// Maps
+export const getMaps = () => api.get('/maps');
+export const getMap = (id) => api.get(`/maps/${id}`);
+export const createMap = (data) => api.post('/maps', data);
+export const updateMap = (id, d) => api.put(`/maps/${id}`, d);
+export const deleteMap = (id) => api.delete(`/maps/${id}`);
+
 export default api;
