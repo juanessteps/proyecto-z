@@ -1,14 +1,13 @@
 const { Router } = require('express');
-const c = require('../controllers/crudController');
-const auth = require('../middlewares/auth');
-const roleGuard = require('../middlewares/roleGuard');
+const characters = require('../data/characters');
 
 const router = Router();
 
-router.get('/', c.getAll('characters'));
-router.get('/:id', c.getOne('characters'));
-router.post('/', auth, roleGuard('admin'), c.createCharacter);
-router.put('/:id', auth, roleGuard('admin'), c.updateCharacter);
-router.delete('/:id', auth, roleGuard('admin'), c.deleteRow('characters'));
+router.get('/', (_req, res) => res.json(characters));
+router.get('/:id', (req, res) => {
+    const item = characters.find(c => c.id === parseInt(req.params.id));
+    if (!item) return res.status(404).json({ error: 'Not found' });
+    res.json(item);
+});
 
 module.exports = router;

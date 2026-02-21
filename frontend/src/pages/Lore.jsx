@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import {
     Box, Container, Typography, Accordion, AccordionSummary, AccordionDetails,
-    CircularProgress, Alert, Divider, Chip
+    CircularProgress, Alert, Chip
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { getLoreEntries } from '../api';
-import CommentSection from '../components/CommentSection';
 
 const Lore = () => {
     const [entries, setEntries] = useState([]);
@@ -45,7 +44,11 @@ const Lore = () => {
                 <Box key={chapter} sx={{ mb: 5 }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
                         <Box sx={{ flex: 1, height: 1, background: '#2c2020' }} />
-                        <Chip label={chapter} variant="outlined" sx={{ borderColor: '#c0392b', color: '#c0392b', fontFamily: "'Cinzel'", letterSpacing: '0.1em' }} />
+                        <Chip
+                            label={chapter}
+                            variant="outlined"
+                            sx={{ borderColor: '#c0392b', color: '#c0392b', fontFamily: "'Cinzel'", letterSpacing: '0.1em' }}
+                        />
                         <Box sx={{ flex: 1, height: 1, background: '#2c2020' }} />
                     </Box>
 
@@ -74,11 +77,9 @@ const Lore = () => {
                                 </Typography>
                             </AccordionSummary>
                             <AccordionDetails sx={{ borderTop: '1px solid #2c2020' }}>
-                                <Typography variant="body1" sx={{ color: '#d4c5b0', lineHeight: 1.9, mb: 3 }}>
+                                <Typography variant="body1" sx={{ color: '#d4c5b0', lineHeight: 1.9 }}>
                                     {entry.content}
                                 </Typography>
-                                <Divider sx={{ borderColor: '#2c2020', mb: 2 }} />
-                                <CommentSection entity="lore_entries" entityId={entry.id} />
                             </AccordionDetails>
                         </Accordion>
                     ))}

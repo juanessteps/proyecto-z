@@ -1,7 +1,7 @@
 {
     "name": "silenthill2-backend",
     "version": "1.0.0",
-    "description": "Silent Hill 2 Fan Portal — REST API",
+    "description": "Silent Hill 2 Fan Portal — REST API (static data, no database required)",
     "main": "src/app.js",
     "scripts": {
         "dev": "nodemon src/app.js",
@@ -11,20 +11,16 @@
         "silenthill",
         "nodejs",
         "express",
-        "postgresql",
-        "jwt"
+        "api"
     ],
     "author": "juanessteps",
     "license": "MIT",
     "devDependencies": {
-        "bcryptjs": "^3.0.3",
         "cors": "^2.8.6",
         "dotenv": "^17.3.1",
         "express": "^5.2.1",
         "helmet": "^8.1.0",
-        "jsonwebtoken": "^9.0.3",
         "morgan": "^1.10.1",
-        "nodemon": "^3.1.14",
-        "pg": "^8.18.0"
+        "nodemon": "^3.1.14"
     }
 }

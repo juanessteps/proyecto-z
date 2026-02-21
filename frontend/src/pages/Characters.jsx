@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import {
     Box, Container, Typography, Grid, Card, CardContent, CardMedia, CardActionArea,
-    Chip, Dialog, DialogContent, DialogTitle, IconButton, CircularProgress, Alert, Divider
+    Chip, Dialog, DialogContent, DialogTitle, IconButton, CircularProgress, Alert
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { getCharacters, getComments, createComment, deleteComment } from '../api';
-import { useAuth } from '../context/AuthContext';
-import CommentSection from '../components/CommentSection';
+import { getCharacters } from '../api';
 
 const ROLE_COLORS = {
     Protagonist: 'error',
@@ -16,7 +14,6 @@ const ROLE_COLORS = {
 };
 
 const Characters = () => {
-    const { user } = useAuth();
     const [characters, setCharacters] = useState([]);
     const [selected, setSelected] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -89,7 +86,7 @@ const Characters = () => {
             <Dialog
                 open={!!selected}
                 onClose={() => setSelected(null)}
-                maxWidth="md"
+                maxWidth="sm"
                 fullWidth
                 PaperProps={{ sx: { background: '#110f0f', border: '1px solid #2c2020', borderRadius: 0 } }}
             >
@@ -111,14 +108,12 @@ const Characters = () => {
                                     src={selected.image_url}
                                     alt={selected.name}
                                     onError={(e) => { e.target.style.display = 'none'; }}
-                                    sx={{ width: '100%', maxHeight: 300, objectFit: 'contain', mb: 3, filter: 'contrast(1.1)' }}
+                                    sx={{ width: '100%', maxHeight: 280, objectFit: 'contain', mb: 3, filter: 'contrast(1.1)' }}
                                 />
                             )}
-                            <Typography variant="body1" sx={{ color: '#d4c5b0', lineHeight: 1.8, mb: 4 }}>
+                            <Typography variant="body1" sx={{ color: '#d4c5b0', lineHeight: 1.9 }}>
                                 {selected.description}
                             </Typography>
-                            <Divider sx={{ borderColor: '#2c2020', mb: 3 }} />
-                            <CommentSection entity="characters" entityId={selected.id} />
                         </DialogContent>
                     </>
                 )}

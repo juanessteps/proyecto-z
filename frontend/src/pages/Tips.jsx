@@ -6,7 +6,6 @@ import LockIcon from '@mui/icons-material/Lock';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import { getTips } from '../api';
-import CommentSection from '../components/CommentSection';
 
 const DIFF_CONFIG = {
     easy: { label: 'Easy', color: 'success', icon: <LockOpenIcon fontSize="small" /> },
@@ -16,7 +15,6 @@ const DIFF_CONFIG = {
 
 const Tips = () => {
     const [tips, setTips] = useState([]);
-    const [openTip, setOpenTip] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
@@ -49,13 +47,11 @@ const Tips = () => {
             <Grid container spacing={3}>
                 {tips.map((tip) => {
                     const diff = DIFF_CONFIG[tip.difficulty] || DIFF_CONFIG.medium;
-                    const isOpen = openTip === tip.id;
                     return (
                         <Grid item xs={12} md={6} key={tip.id}>
                             <Card
                                 elevation={0}
-                                onClick={() => setOpenTip(isOpen ? null : tip.id)}
-                                sx={{ cursor: 'pointer', borderLeft: `3px solid`, borderLeftColor: `${diff.color}.main` }}
+                                sx={{ height: '100%', borderLeft: '3px solid', borderLeftColor: `${diff.color}.main` }}
                             >
                                 <CardContent>
                                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1.5 }}>
@@ -74,11 +70,6 @@ const Tips = () => {
                                     <Typography variant="body2" sx={{ color: '#8c7b68', lineHeight: 1.8 }}>
                                         {tip.content}
                                     </Typography>
-                                    {isOpen && (
-                                        <Box sx={{ mt: 3, borderTop: '1px solid #2c2020', pt: 2 }} onClick={e => e.stopPropagation()}>
-                                            <CommentSection entity="survival_tips" entityId={tip.id} />
-                                        </Box>
-                                    )}
                                 </CardContent>
                             </Card>
                         </Grid>
