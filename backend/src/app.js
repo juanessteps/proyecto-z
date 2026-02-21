@@ -28,6 +28,21 @@ app.use('/api/items', itemRoutes);
 app.use('/api/tips', tipRoutes);
 app.use('/api/maps', mapRoutes);
 
+// ── Root Route ──────────────────────────────────────────────
+app.get('/', (_req, res) => {
+    res.json({
+        message: 'Silent Hill 2 Fan Portal API is running',
+        endpoints: [
+            '/api/characters',
+            '/api/lore',
+            '/api/items',
+            '/api/tips',
+            '/api/maps',
+            '/api/health'
+        ]
+    });
+});
+
 // ── Health check ──────────────────────────────────────────
 app.get('/api/health', (_req, res) => {
     res.json({
