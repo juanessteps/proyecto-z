@@ -3,14 +3,14 @@ const characters = [
         id: 1,
         name: 'James Sunderland',
         description: 'A man haunted by grief who receives a letter from his dead wife Mary, drawing him back to Silent Hill — the place they once called their "special place." Quiet, withdrawn, and consumed by guilt he has yet to fully confront.',
-        image_url: 'https://static.wikia.nocookie.net/silent/images/6/62/James_Sunderland.webp/revision/latest?cb=20231001005315',
+        image_url: 'https://static.wikia.nocookie.net/silent/images/5/5d/SH2R_-_James_Sunderland_render.jpg/revision/latest?cb=20240826170709',
         role_type: 'Protagonist',
     },
     {
         id: 2,
         name: 'Maria',
         description: 'A mysterious woman James encounters in Rosewater Park. She bears an uncanny resemblance to Mary, yet is bold, provocative, and very much alive. Her origins are unknown — even to her.',
-        image_url: 'https://static.wikia.nocookie.net/silent/images/2/2d/Maria_SH_2.png/revision/latest?cb=20181009144357',
+        image_url: 'https://static.wikia.nocookie.net/silent/images/0/02/SH2R_-_Maria_render.jpg/revision/latest?cb=20240827101159',
         role_type: 'Companion',
     },
     {
@@ -24,14 +24,14 @@ const characters = [
         id: 4,
         name: 'Eddie Dombrowski',
         description: 'A young man who was relentlessly bullied and humiliated. Silent Hill amplifies his rage and paranoia until he can no longer distinguish between self-defense and violence.',
-        image_url: 'https://static.wikia.nocookie.net/silent/images/c/c3/Eddie.png/revision/latest?cb=20160326173823',
+        image_url: 'https://static.wikia.nocookie.net/silent/images/1/1a/SH2R_-_Eddie_Dombrowski_render.jpg/revision/latest?cb=20240828090705',
         role_type: 'Supporting',
     },
     {
         id: 5,
         name: 'Laura',
         description: 'A fearless eight-year-old orphan who knew Mary in her final days. Immune to the horrors of Silent Hill, she wanders the town with unnerving calm, looking for the woman she called her friend.',
-        image_url: 'https://static.wikia.nocookie.net/silent/images/9/98/Lauraprofile.png/revision/latest?cb=20151108035440',
+        image_url: 'https://static.wikia.nocookie.net/silent/images/3/36/SH2R_-_Laura_render.jpg/revision/latest?cb=20240829090957',
         role_type: 'Supporting',
     },
     {
@@ -45,7 +45,7 @@ const characters = [
         id: 7,
         name: 'Mary Shepherd-Sunderland',
         description: 'James\'s late wife, dead from a terminal illness. She exists only in memories, photographs, and a letter — yet her presence defines every step of James\'s journey through Silent Hill.',
-        image_url: 'https://static.wikia.nocookie.net/silent/images/3/39/Mary_SH_2.png/revision/latest?cb=20200618115826',
+        image_url: 'https://static.wikia.nocookie.net/silent/images/3/3c/SH2R_-_Mary_bedridden.png/revision/latest?cb=20241107095016',
         role_type: 'Supporting',
     },
 ];
