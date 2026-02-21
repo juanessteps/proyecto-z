@@ -33,7 +33,6 @@
 Frontend  → React 18 + Vite + Material UI v5 (Dark Theme)
 Backend   → Node.js + Express
 Database  → PostgreSQL
-Auth      → JWT + bcrypt (Roles: admin / cliente)
 ```
 
 ---
