@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: '/api' });
+const baseURL = import.meta.env.VITE_API_URL || '/api';
+const api = axios.create({ baseURL });
 
 /**
  * Route Fandom CDN images through our backend proxy so the server
@@ -13,7 +14,7 @@ export const proxyImg = (url) => {
         url.includes('wikia.com') ||
         url.includes('silenthillmemories.net')
     ) {
-        return `/api/img?url=${encodeURIComponent(url)}`;
+        return `${baseURL}/img?url=${encodeURIComponent(url)}`;
     }
     return url;
 };
